@@ -68,7 +68,7 @@
                 android:text="@string/view_orders" />
 
             <Button
-                android:id="@+id/order_twelve_cupcakes"
+                android:id="@+id/view_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

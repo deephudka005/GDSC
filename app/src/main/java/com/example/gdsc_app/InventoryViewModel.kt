@@ -29,11 +29,6 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
             itemDao.insert(item)
         }
     }
-    fun deleteItem(item: Order) {
-        viewModelScope.launch {
-            itemDao.delete(item)
-        }
-    }
     /**
      * Returns true if the EditTexts are not empty
      */
@@ -44,10 +39,7 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         return true
     }
 
-    /**
-     * Returns an instance of the [Item] entity class with the item info entered by the user.
-     * This will be used to add a new entry to the Inventory database.
-     */
+
     private fun getNewItemEntry(
         product: String, quantityoforder: String, shining: String, date: String
     ): Order {
@@ -61,9 +53,7 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
 
 }
 
-/**
- * Factory class to instantiate the [ViewModel] instance.
- */
+
 class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(InventoryViewModel::class.java)) {

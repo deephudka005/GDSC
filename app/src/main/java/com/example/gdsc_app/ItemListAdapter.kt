@@ -1,50 +1,46 @@
 package com.example.gdsc_app
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
-import androidx.recyclerview.widget.DiffUtil
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Index
 import com.example.gdsc_app.data.Order
-import com.example.gdsc_app.databinding.FragmentVieworderBinding
-import com.google.android.ads.mediationtestsuite.viewmodels.ItemViewHolder
 
-class ItemListAdapter():  ListAdapter<Order,ItemListAdapter.ItemViewHolder>(DiffCallback) {
-
+class ItemListAdapter():  RecyclerView.Adapter<ItemListAdapter.ItemViewHolder>(){
+    private val items:ArrayList<Order> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        return ItemViewHolder(
-            FragmentVieworderBinding.inflate(
-                LayoutInflater.from(
-                    parent.context
-                )
-            )
-        )
+        val view=LayoutInflater.from(parent.context).inflate(R.layout.item_list_item,parent,false)
+        val viewHoler=ItemViewHolder(view)
+        return viewHoler
     }
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val current = getItem(position)
-        holder.bind(current)
-    }
-    class ItemViewHolder(private var binding: ItemListItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
 
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val current = items[position]
+        holder.id.text= current.id.toString()
+        holder.product.text=current.product_name
+        holder.quantity.text=current.quantity
+        holder.shining.text=current.shining
+        holder.date.text=current.date
+    }
+
+    override fun getItemCount(): Int {
+        return items.size
+    }
+    /*class ItemViewHolder(private var binding: ItemListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Order) {
             binding.id.text = item.id
             binding.productinfo.text = item.product_name
-            binding.quantityofproduct.text = item.quantity
-            binding.shiningofproduct.text= item.shining
-            binding.dateoforder.text = item.date
+            binding.itemQuantity.text = item.quantity
+            binding.
         }
-    }
-    companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<Order>() {
-            override fun areItemsTheSame(oldItem: Order, newItem: Order): Boolean {
-                return oldItem === newItem
-            }
-
-            override fun areContentsTheSame(oldItem: Order, newItem: Order): Boolean {
-                return oldItem.itemName == newItem.itemName
-            }
-        }
+    }*/
+    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val id: TextView =itemView.findViewById(R.id.id)
+        val product: TextView =itemView.findViewById(R.id.productinfo)
+        val quantity: TextView = itemView.findViewById(R.id.quantityofproduct)
+        val shining: TextView= itemView.findViewById(R.id.shiningofproduct)
+        val date: TextView= itemView.findViewById(R.id.dateoforder)
     }
 }

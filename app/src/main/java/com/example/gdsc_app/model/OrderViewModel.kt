@@ -3,6 +3,10 @@ package com.example.gdsc_app.model
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.gdsc_app.data.ItemDao
+import com.example.gdsc_app.data.Order
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -13,8 +17,7 @@ private const val PRICE_PER_CUPCAKE = 2.00
 private const val PRICE_FOR_SAME_DAY_PICKUP = 3.00
 
 
-class OrderViewModel : ViewModel() {
-
+class OrderViewModel() : ViewModel() {
         // Quantity of cupcakes in this order
         private val _quantity = MutableLiveData<String>()
         val quantity: LiveData<String> = _quantity
@@ -66,5 +69,8 @@ class OrderViewModel : ViewModel() {
             val formatedDate = formatter.format(date)
             return formatedDate
         }
+
+
+
 
 }

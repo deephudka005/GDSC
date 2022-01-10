@@ -24,4 +24,6 @@
     <string name="send">Send</string>
     <string name="shining">Shining</string>
     <string name="please_signin_to_continue">Please SignIn to Continue!</string>
+    <string name="email">Email:-</string>
+    <string name="back_to_home">Back To Home</string>
 </resources>

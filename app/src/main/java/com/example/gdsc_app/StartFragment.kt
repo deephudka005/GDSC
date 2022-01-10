@@ -10,6 +10,7 @@ import com.example.gdsc_app.databinding.FragmentStartBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_start.*
 
 class StartFragment:Fragment() {
     private var binding: FragmentStartBinding? = null
@@ -32,14 +33,18 @@ class StartFragment:Fragment() {
             // Set up the button click listeners
             placeAnOrder.setOnClickListener { place_order() }
             viewOrders.setOnClickListener { view_order() }
+            view_details.setOnClickListener{viewDetails()}
         }
     }
 
     private fun view_order() {
-
+        findNavController().navigate(R.id.action_startFragment_to_viewOrderFragment)
     }
 
     private fun place_order() {
         findNavController().navigate(R.id.action_startFragment_to_epoxyFragment)
+    }
+    private fun viewDetails(){
+        findNavController().navigate(R.id.action_startFragment_to_detailFragment)
     }
 }

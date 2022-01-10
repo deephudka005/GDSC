@@ -14,11 +14,6 @@ class QuantityFragment: Fragment() {
     private var binding: FragmentQuantityBinding? = null
 
     private val sharedViewModel: OrderViewModel by activityViewModels()
-    private val viewModel: InventoryViewModel by activityViewModels {
-        InventoryViewModelFactory(
-            (activity?.application as InventoryApplication).database.itemDao()
-        )
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,10 +37,12 @@ class QuantityFragment: Fragment() {
         }
     }
     private fun isEntryValid(): Boolean {
-        return viewModel.isEntryValid(
-            binding?.quantity?.text.toString()
-        )
+        if (binding?.quantity?.text.toString().isBlank()) {
+            return false
+        }
+        return true
     }
+
     fun goToNextScreen() {
         if(isEntryValid()) {
             val value = binding?.quantity?.text.toString()

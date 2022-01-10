@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import com.example.gdsc_app.databinding.FragmentSummaryBinding
 import com.example.gdsc_app.model.OrderViewModel
 
@@ -20,10 +21,12 @@ class SummaryFragment: Fragment() {
     private var binding: FragmentSummaryBinding? = null
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
+
     private val sharedViewModel: OrderViewModel by activityViewModels()
     private val viewModel: InventoryViewModel by activityViewModels {
         InventoryViewModelFactory(
-            (activity?.application as InventoryApplication).database.itemDao()
+            (activity?.applicationContext as InventoryApplication).database
+                .itemDao()
         )
     }
     override fun onCreateView(
@@ -58,7 +61,8 @@ class SummaryFragment: Fragment() {
     }
     fun sendOrder() {
         // Construct the order summary text with information from the view model
-        addNewItem()
+        //addNewItem()
+
         val orderSummary = getString(
             R.string.order_details,
             sharedViewModel.epoxygrout.value.toString(),
