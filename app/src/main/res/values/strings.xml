@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">gdsc_app</string>
+    <string name="evershine_epoxy_grout">Welcome to,\nEvershine Epoxy Grout</string>
+    <string name="place_an_order">Place an Order</string>
+    <string name="view_orders">View Orders</string>
+    <string name="default_web_client_id_auth">387236161614-vnr7n5uopc3aaovcp6j2ol73d4s8a7ek.apps.googleusercontent.com</string>
+    <string name="view_your_details">View Your Details</string>
+    <string name="golden_shine">Golden Shine</string>
+    <string name="silver_shine">Silver Shine</string>
+    <string name="simple_shine">Simple Shine</string>
+    <string name="copper_shine">Copper Shine</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="_2315_jet_black">2315 - Jet Black</string>
+    <string name="_2390_teracotta">2390 - Teracotta</string>
+    <string name="_2376_coffee">2376 - Coffee</string>
+    <string name="_2372_copper_brown">2372 - Copper Brown</string>
+    <string name="new_epoxygrout_order">New Epoxy Grout Order</string>
+    <string name="enter_the_quantity">Enter the Quantity</string>
+    <string name="quantity">Quantity</string>
+    <string name="product">Product</string>
+    <string name="order_details">Product: %1$s \nQuantity: %2$s \nShining: %3$s \nOrder Date: %4$s \n\nThank you!</string>
+    <string name="order_date">Order Date</string>
+    <string name="send">Send</string>
+    <string name="shining">Shining</string>
+    <string name="please_signin_to_continue">Please SignIn to Continue!</string>
+</resources>
