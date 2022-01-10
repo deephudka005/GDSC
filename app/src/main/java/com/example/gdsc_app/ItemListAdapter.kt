@@ -10,7 +10,8 @@ import com.example.gdsc_app.data.Order
 import com.example.gdsc_app.databinding.FragmentVieworderBinding
 import com.google.android.ads.mediationtestsuite.viewmodels.ItemViewHolder
 
-class ItemListAdapter(): ListAdapter<Index.Order, ItemListAdapter.ItemViewHolder> {
+class ItemListAdapter():  ListAdapter<Order,ItemListAdapter.ItemViewHolder>(DiffCallback) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
             FragmentVieworderBinding.inflate(
@@ -24,13 +25,15 @@ class ItemListAdapter(): ListAdapter<Index.Order, ItemListAdapter.ItemViewHolder
         val current = getItem(position)
         holder.bind(current)
     }
-    class ItemViewHolder(private var binding: FragmentVieworderBinding) :
+    class ItemViewHolder(private var binding: ItemListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Order) {
-            binding.itemName.text = item.itemName
-            binding.itemPrice.text = item.getFormattedPrice()
-            binding.itemQuantity.text = item.quantityInStock.toString()
+            binding.id.text = item.id
+            binding.productinfo.text = item.product_name
+            binding.quantityofproduct.text = item.quantity
+            binding.shiningofproduct.text= item.shining
+            binding.dateoforder.text = item.date
         }
     }
     companion object {
