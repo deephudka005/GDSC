@@ -8,9 +8,11 @@ Buiness nowadays have got a lot of competition. So it is essential for any buisn
 
 
 Solution to the Problem: 
+
 So when I was going through the CodeLabs, I saw the Cupcake Order App.I just loved the UI and Navigation was smooth and simple enough that the unliterated people can also understand the working of how to use it. This has simple features but they can be made more advanced and still keeping the UI simple. Also we can always add support for multiple languages, as in big country like India there 22 different languages which are used in daily life. So this App is just like Cupcake App but little more advanced version.
 
 Funcitonality and Concepts:
+
 This app starts with Google Login using Firebase Authentication System. I just love Firebase, one of the favourite things which I regularly love to use as an Android Developer. After the login is successful, the user will be redirected to HomePage. The HomePage consists of three buttons which 
 
 1. Place an Order:- It redirects to order placing system like the Cupcake App. I have modified the options according to my personal use (For Evershine). I have not implemented functionality for multiple orders like for example if the retailer wants to order more than one Epoxy Items then he will have to go through app many times. Which will increase time consumption istead of reducing it. Check Future scope the changes which I want to implement.
@@ -22,6 +24,7 @@ This app starts with Google Login using Firebase Authentication System. I just l
 This was all about functionality now let's talk about concepts used. I used Vivedata (mutable), Viewmodel, View Binding, Firebase, Room DataBase, FireStore, Navigation Library, Constraint Layouts.
 
 Future Implementations:
+
 Earlier I talked about the app, it is right now time consuming people who want to order more than one thing at a time. That's where the future implementations come into picture. Actually I was not able to take out time from starting as I was involved in the Internship with a company. This App was made by me in time of 5-6hrs. Now what all things I want to add.
 1. The functionality of adding more than one items in sigle order
 2. The order summary will also the user details who send the order (just for confirmation)
