@@ -22,7 +22,7 @@ This app starts with Google Login using Firebase Authentication System. I just l
 3. Your Info(User Info):- This page shows the user details which is provided by Google Firebase. It contains Profile Picture of the user, Email id and Name. The user details are also stored on Firestore DataBase. I have Attached Screenshot.
 
 
-![picture alt](https://drive.google.com/file/d/1eBEmbXIDW_QBL7glr5nML0zk8pdQyLv5/view?usp=sharing.jpg)
+![alt text](https://drive.google.com/file/d/1eBEmbXIDW_QBL7glr5nML0zk8pdQyLv5/view?usp=sharing.jpg)
 
 This was all about functionality now let's talk about concepts used. I used Vivedata (mutable), Viewmodel, View Binding, Firebase, Room DataBase, FireStore, Navigation Library, Constraint Layouts.
 
