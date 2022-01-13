@@ -54,6 +54,16 @@ class ItemListFragment : Fragment() {
         binding?.floatingActionButton?.setOnClickListener {
             startOrder()
         }
+        binding?.apply {
+            // Specify the fragment as the lifecycle owner
+            lifecycleOwner = viewLifecycleOwner
+
+            // Assign the view model to a property in the binding class
+            viewModel = sharedViewModel
+
+            // Assign the fragment
+            itemlist = this@ItemListFragment
+        }
     }
 
     fun sendOrder(){

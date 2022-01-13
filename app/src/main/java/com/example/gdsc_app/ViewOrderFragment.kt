@@ -41,6 +41,16 @@ class ViewOrderFragment: Fragment() {
         }
         // Attach an observer on the allItems list to update the UI automatically when the data
         // changes.
+        binding?.apply {
+            // Specify the fragment as the lifecycle owner
+            lifecycleOwner = viewLifecycleOwner
+
+            // Assign the view model to a property in the binding class
+            viewModel = sharedViewModel
+
+            // Assign the fragment
+            vieworder = this@ViewOrderFragment
+        }
 
     }
 }

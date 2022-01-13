@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".QuantityFragment">
+    tools:context=".ViewOrderFragment">
 
     <data>
         <variable
@@ -10,8 +10,8 @@
             type="com.example.gdsc_app.model.OrderViewModel" />
 
         <variable
-            name="quantityFragment"
-            type="com.example.gdsc_app.QuantityFragment" />
+            name="vieworder"
+            type="com.example.gdsc_app.ViewOrderFragment" />
     </data>
 
     <ScrollView
@@ -24,8 +24,6 @@
             android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:itemCount="20"
-            tools:listitem="@layout/item_list_item"
             />
     </ScrollView>
 </layout>
