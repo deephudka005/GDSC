@@ -9,11 +9,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.gdsc_app.databinding.FragmentQuantityBinding
 import com.example.gdsc_app.model.OrderViewModel
+import com.example.gdsc_app.model.OrderViewModelFactory
 
 class QuantityFragment: Fragment() {
     private var binding: FragmentQuantityBinding? = null
 
-    private val sharedViewModel: OrderViewModel by activityViewModels()
+    private val sharedViewModel: OrderViewModel by activityViewModels{
+        OrderViewModelFactory(
+            (activity?.application as InventoryApplication).database.itemDao()
+        )
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

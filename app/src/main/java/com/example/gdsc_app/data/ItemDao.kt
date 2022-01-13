@@ -11,8 +11,11 @@ import kotlinx.coroutines.flow.Flow
 interface ItemDao {
 
 
-    @Query("SELECT * from `Order`")
-    abstract fun getItems(): Flow<List<Order>>
+    @Query("SELECT * from `order` ORDER BY name ASC")
+    fun getItems(): Flow<List<Order>>
+
+    @Query("SELECT * from `order` WHERE id = :id")
+    fun getItem(id: Int): Flow<Order>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(item: Order){}

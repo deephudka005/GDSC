@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
     private var binding: FragmentDetailBinding? = null
@@ -33,7 +32,7 @@ class DetailFragment : Fragment() {
         auth= Firebase.auth
         val user=auth.currentUser
         val photourl= auth.getCurrentUser()?.getPhotoUrl()
-        Picasso.get().load(photourl).into(profileImage)
+        Picasso.get().load(photourl).into(binding?.profileImage)
         binding?.username?.setText(user?.displayName.toString())
         binding?.email?.setText(user?.email.toString())
 

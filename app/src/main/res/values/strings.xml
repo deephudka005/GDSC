@@ -26,4 +26,6 @@
     <string name="please_signin_to_continue">Please SignIn to Continue!</string>
     <string name="email">Email:-</string>
     <string name="back_to_home">Back To Home</string>
+    <string name="add_order">Add Order</string>
+    <string name="add_new_item">Add new item</string>
 </resources>

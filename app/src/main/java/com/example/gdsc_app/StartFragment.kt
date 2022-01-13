@@ -42,7 +42,7 @@ class StartFragment:Fragment() {
     }
 
     private fun place_order() {
-        findNavController().navigate(R.id.action_startFragment_to_epoxyFragment)
+        findNavController().navigate(R.id.action_startFragment_to_itemListFragment)
     }
     private fun viewDetails(){
         findNavController().navigate(R.id.action_startFragment_to_detailFragment)
