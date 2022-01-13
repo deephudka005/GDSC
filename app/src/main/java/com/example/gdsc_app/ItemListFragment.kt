@@ -87,6 +87,7 @@ class ItemListFragment : Fragment() {
             // device if multiple apps can handle this intent)
             startActivity(intent)
         }
+        findNavController().navigate(R.id.action_itemListFragment_to_epoxyFragment)
     }
     fun startOrder(){
 
