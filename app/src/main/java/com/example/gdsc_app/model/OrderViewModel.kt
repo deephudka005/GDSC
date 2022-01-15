@@ -1,8 +1,14 @@
 package com.example.gdsc_app.model
 
+import android.app.Application
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.*
+import com.example.gdsc_app.OrderRepository
 import com.example.gdsc_app.data.ItemDao
+import com.example.gdsc_app.data.ItemRoomDatabase
 import com.example.gdsc_app.data.Order
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -14,8 +20,21 @@ private const val PRICE_PER_CUPCAKE = 2.00
 private const val PRICE_FOR_SAME_DAY_PICKUP = 3.00
 
 
-class OrderViewModel(private val itemDao: ItemDao) : ViewModel() {
+class OrderViewModel(application: Application) :AndroidViewModel(application) {
         // Quantity of cupcakes in this order
+         val allOrder: LiveData<List<Order>>
+        val repository: OrderRepository
+
+        init{
+            val dao = ItemRoomDatabase.getDatabase(application).getitemDao()
+            repository = OrderRepository(dao)
+            allOrder = repository.AllData
+        }
+
+        fun addOrder(order: Order) = viewModelScope.launch(Dispatchers.IO){
+                repository.addOrder(order)
+            }
+
         private val _quantity = MutableLiveData<String>()
         val quantity: LiveData<String> = _quantity
 
@@ -67,47 +86,55 @@ class OrderViewModel(private val itemDao: ItemDao) : ViewModel() {
             return formatedDate
         }
 
-    val allItems: LiveData<List<Order>> = itemDao.getItems().asLiveData()
+    //val readallData: LiveData<List<Order>> = itemDao.getItems().asLiveData()
 
-    fun addNewItem(product_name: String, quantity: String, shining: String, date: String) {
-        val newItem = getNewItemEntry(product_name, quantity, shining,date)
-        insertItem(newItem)
+/*fun addNewItem(product_name: String, quantity: String, shining: String, date: String) {
+    val newItem = getNewItemEntry(product_name, quantity, shining,date)
+    insertItem(newItem)
+}*/
+
+/**
+ * Launching a new coroutine to insert an item in a non-blocking way
+ */
+/*private fun insertItem(item: Order) {
+    viewModelScope.launch {
+        itemDao.insert(item)
     }
-
-    /**
-     * Launching a new coroutine to insert an item in a non-blocking way
-     */
-    private fun insertItem(item: Order) {
-        viewModelScope.launch {
-            itemDao.insert(item)
-        }
+}
+fun deleteItem(item: Order) {
+    viewModelScope.launch {
+        itemDao.delete(item)
     }
-    /**
-     * Returns true if the EditTexts are not empty
-     */
+}
+fun retrieveItem(id: Int): LiveData<Order> {
+    return itemDao.getItem(id).asLiveData()
+}
+/**
+ * Returns true if the EditTexts are not empty
+ */
 
 
-    private fun getNewItemEntry(
-        product: String, quantityoforder: String, shining: String, date: String
-    ): Order {
-        return Order(
-            product_name = product,
-            quantity =quantityoforder ,
-            shining =shining,
-            date = date
-        )
-    }
+private fun getNewItemEntry(
+    product: String, quantityoforder: String, shining: String, date: String
+): Order {
+    return Order(
+        product_name = product,
+        quantity =quantityoforder ,
+        shining =shining,
+        date = date
+    )
+}*/
 
 }
 
 
 
-class OrderViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(OrderViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return OrderViewModel(itemDao) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
+/*class OrderViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
+override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    if (modelClass.isAssignableFrom(OrderViewModel::class.java)) {
+        @Suppress("UNCHECKED_CAST")
+        return OrderViewModel(itemDao) as T
     }
+    throw IllegalArgumentException("Unknown ViewModel class")
 }
+}*/

@@ -28,4 +28,5 @@
     <string name="back_to_home">Back To Home</string>
     <string name="add_order">Add Order</string>
     <string name="add_new_item">Add new item</string>
+    <string name="clear">Clear</string>
 </resources>

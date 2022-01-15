@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -14,7 +15,7 @@ import androidx.room.Room
 import com.example.gdsc_app.data.Order
 import com.example.gdsc_app.databinding.FragmentSummaryBinding
 import com.example.gdsc_app.model.OrderViewModel
-import com.example.gdsc_app.model.OrderViewModelFactory
+//import com.example.gdsc_app.model.OrderViewModelFactory
 
 class SummaryFragment: Fragment() {
     // Binding object instance corresponding to the fragment_summary.xml layout
@@ -24,11 +25,7 @@ class SummaryFragment: Fragment() {
     lateinit var item: Order
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
 
-    private val sharedViewModel: OrderViewModel by activityViewModels{
-        OrderViewModelFactory(
-            (activity?.application as InventoryApplication).database.itemDao()
-        )
-    }
+    private val sharedViewModel: OrderViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,12 +48,15 @@ class SummaryFragment: Fragment() {
      * Submit the order by sharing out the order details to another app via an implicit intent.
      */
     private fun addNewItem() {
-        sharedViewModel.addNewItem(
-                sharedViewModel.epoxygrout.value.toString(),
-                sharedViewModel.quantity.value.toString(),
-                sharedViewModel.shining.value.toString(),
-                sharedViewModel.date.value.toString(),
-            )
+        val epoxygrout = sharedViewModel.epoxygrout.value.toString()
+        val quantity = sharedViewModel.quantity.value.toString()
+        val shining = sharedViewModel.shining.value.toString()
+        val date = sharedViewModel.date.value.toString()
+        //create order object
+
+        //add order
+        sharedViewModel.addOrder(Order(0,epoxygrout,quantity,shining,date))
+        Toast.makeText(this.context,"Successfully Added!",Toast.LENGTH_LONG).show()
     }
     fun addOrder(){
         addNewItem()

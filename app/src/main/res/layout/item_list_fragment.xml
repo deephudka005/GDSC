@@ -36,7 +36,14 @@
                 app:layout_constraintBottom_toBottomOf="@id/recyclerView"
                 android:orientation="vertical"
                 android:padding="16dp">
-
+                <Button
+                    android:id="@+id/clear_button"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{() -> itemlist.clearOrder()}"
+                    android:text="@string/clear" />
             <Button
                 android:id="@+id/send_button"
                 android:layout_width="match_parent"

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "order_table")
 data class Order(
     @PrimaryKey(autoGenerate = true)
     val id:  Int = 0,
@@ -17,3 +17,4 @@ data class Order(
     @ColumnInfo(name = "Order Date")
     val date: String
 )
+

@@ -1,32 +1,24 @@
 package com.example.gdsc_app
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.navigation.NavController
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.NavHostFragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gdsc_app.databinding.ItemListFragmentBinding
 import com.example.gdsc_app.model.OrderViewModel
-import com.example.gdsc_app.model.OrderViewModelFactory
+import kotlinx.android.synthetic.main.item_list_fragment.*
+
+//import com.example.gdsc_app.model.OrderViewModelFactory
 
 class ItemListFragment : Fragment() {
     private var binding: ItemListFragmentBinding? = null
-    private val sharedViewModel: OrderViewModel by activityViewModels{
-        OrderViewModelFactory(
-            (activity?.application as InventoryApplication).database.itemDao()
-        )
-    }
-
+    lateinit var sharedViewModel: OrderViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,16 +33,18 @@ class ItemListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mAdapter = ItemListAdapter()
-        binding?.recyclerView?.layoutManager = LinearLayoutManager(this.context)
-        binding?.recyclerView?.adapter = mAdapter
+        sharedViewModel= ViewModelProvider(this).get(OrderViewModel::class.java)
+        val Adapter = ItemListAdapter(this)
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        recyclerView.adapter=Adapter
+        //binding?.recyclerView?.adapter = mAdapter
 
 
-        sharedViewModel.allItems.observe(this.viewLifecycleOwner) { items ->
-            items.let {
-                mAdapter.submitList(it)
+        sharedViewModel.allOrder.observe(viewLifecycleOwner, Observer {list->
+            list?.let {
+                Adapter.setData(it)
             }
-        }
+        })
         binding?.floatingActionButton?.setOnClickListener {
             startOrder()
         }
@@ -65,21 +59,16 @@ class ItemListFragment : Fragment() {
             itemlist = this@ItemListFragment
         }
     }
+    fun clearOrder(){
 
+    }
     fun sendOrder(){
-        val orderSummary = getString(
-           R.string.order_details,
-           sharedViewModel.epoxygrout.value.toString(),
-           sharedViewModel.quantity.value.toString(),
-           sharedViewModel.shining.value.toString(),
-           sharedViewModel.date.value.toString(),
-       )
-
+        val orderSummary = sharedViewModel.allOrder.value.toString()
         // Create an ACTION_SEND implicit intent with order details in the intent extras
         val intent = Intent(Intent.ACTION_SEND)
-            .setType("text/plain")
-            .putExtra(Intent.EXTRA_SUBJECT, getString(R.string.new_epoxygrout_order))
             .putExtra(Intent.EXTRA_TEXT, orderSummary)
+            .setType("text/plain")
+
 
         // Check if there's an app that can handle this intent before launching it
         if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
@@ -87,7 +76,7 @@ class ItemListFragment : Fragment() {
             // device if multiple apps can handle this intent)
             startActivity(intent)
         }
-        findNavController().navigate(R.id.action_itemListFragment_to_epoxyFragment)
+        findNavController().navigate(R.id.action_itemListFragment_to_startFragment)
     }
     fun startOrder(){
 
