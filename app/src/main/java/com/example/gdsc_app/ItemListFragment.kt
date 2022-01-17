@@ -14,6 +14,7 @@ import com.example.gdsc_app.databinding.ItemListFragmentBinding
 import com.example.gdsc_app.model.OrderViewModel
 import kotlinx.android.synthetic.main.item_list_fragment.*
 
+
 //import com.example.gdsc_app.model.OrderViewModelFactory
 
 class ItemListFragment : Fragment() {
@@ -63,10 +64,9 @@ class ItemListFragment : Fragment() {
 
     }
     fun sendOrder(){
-        val orderSummary = sharedViewModel.allOrder.value.toString()
-        // Create an ACTION_SEND implicit intent with order details in the intent extras
-        val intent = Intent(Intent.ACTION_SEND)
-            .putExtra(Intent.EXTRA_TEXT, orderSummary)
+        val orderlist = sharedViewModel.allOrder.value.toString()
+        val intent = Intent(Intent.ACTION_SEND_MULTIPLE)
+            .putExtra(Intent.EXTRA_TEXT, orderlist)
             .setType("text/plain")
 
 
@@ -74,7 +74,7 @@ class ItemListFragment : Fragment() {
         if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
             // Start a new activity with the given intent (this may open the share dialog on a
             // device if multiple apps can handle this intent)
-            startActivity(intent)
+         startActivity(intent)
         }
         findNavController().navigate(R.id.action_itemListFragment_to_startFragment)
     }

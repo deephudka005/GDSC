@@ -1,23 +1,26 @@
 package com.example.gdsc_app
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.room.Room
+import com.example.gdsc_app.data.Data
 import com.example.gdsc_app.data.Order
+import com.example.gdsc_app.data.OrderDao
 import com.example.gdsc_app.databinding.FragmentSummaryBinding
 import com.example.gdsc_app.model.OrderViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
 //import com.example.gdsc_app.model.OrderViewModelFactory
 
 class SummaryFragment: Fragment() {
+    private lateinit var auth: FirebaseAuth
     // Binding object instance corresponding to the fragment_summary.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
@@ -57,6 +60,21 @@ class SummaryFragment: Fragment() {
         //add order
         sharedViewModel.addOrder(Order(0,epoxygrout,quantity,shining,date))
         Toast.makeText(this.context,"Successfully Added!",Toast.LENGTH_LONG).show()
+        auth= Firebase.auth
+        val user=auth.currentUser
+        val order= Data()
+        order.uid = user?.uid.toString()
+        order.displayName= user?.displayName.toString()
+        order.email= user?.email.toString()
+        order.product = epoxygrout
+        order.quatity = quantity
+        order.shining = shining
+        order.date = date
+        val orderdao = OrderDao()
+        orderdao.addOrder(order)
+
+
+
     }
     fun addOrder(){
         addNewItem()
