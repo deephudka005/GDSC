@@ -1,10 +1,12 @@
-package com.example.gdsc_app.data
+package com.example.gdsc_app.data.DataBase
 
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.gdsc_app.data.Daos.ItemDao
+import com.example.gdsc_app.data.data_class.Order
 
 /**
  * Database class with a singleton INSTANCE object.

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/epoxyFragment"
-        android:name="com.example.gdsc_app.EpoxyFragment"
+        android:name="com.example.gdsc_app.products.EpoxyFragment"
         android:label="fragment_epoxy"
         tools:layout="@layout/fragment_epoxy" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/quantityFragment"
-        android:name="com.example.gdsc_app.QuantityFragment"
+        android:name="com.example.gdsc_app.product_atrributes.QuantityFragment"
         android:label="fragment_quantity"
         tools:layout="@layout/fragment_quantity" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/shiningFragment"
-        android:name="com.example.gdsc_app.ShiningFragment"
+        android:name="com.example.gdsc_app.product_atrributes.ShiningFragment"
         android:label="fragment_shining"
         tools:layout="@layout/fragment_shining" >
         <action
@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"
-        android:name="com.example.gdsc_app.SummaryFragment"
+        android:name="com.example.gdsc_app.product_atrributes.SummaryFragment"
         android:label="fragment_summary"
         tools:layout="@layout/fragment_summary" >
         <action
@@ -80,7 +80,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewOrderFragment"
-        android:name="com.example.gdsc_app.ViewOrderFragment"
+        android:name="com.example.gdsc_app.order_history.ViewOrderFragment"
         android:label="ViewOrderFragment" >
         <action
             android:id="@+id/action_viewOrderFragment_to_startFragment"
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.gdsc_app.DetailFragment"
+        android:name="com.example.gdsc_app.profile.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <action
@@ -97,7 +97,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemListFragment"
-        android:name="com.example.gdsc_app.ItemListFragment"
+        android:name="com.example.gdsc_app.current_order.ItemListFragment"
         android:label="item_list_fragment"
         tools:layout="@layout/item_list_fragment" >
         <action

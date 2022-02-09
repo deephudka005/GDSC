@@ -1,4 +1,4 @@
-package com.example.gdsc_app.data
+package com.example.gdsc_app.data.data_class
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ViewOrderFragment">
+    tools:context=".order_history.ViewOrderFragment">
 
     <data>
         <variable
@@ -11,7 +11,7 @@
 
         <variable
             name="vieworder"
-            type="com.example.gdsc_app.ViewOrderFragment" />
+            type="com.example.gdsc_app.order_history.ViewOrderFragment" />
     </data>
 
     <ScrollView

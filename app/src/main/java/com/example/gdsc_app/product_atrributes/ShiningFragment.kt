@@ -1,4 +1,4 @@
-package com.example.gdsc_app
+package com.example.gdsc_app.product_atrributes
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,34 +7,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.gdsc_app.databinding.FragmentDetailBinding
-import com.example.gdsc_app.databinding.FragmentQuantityBinding
+import com.example.gdsc_app.R
+import com.example.gdsc_app.databinding.FragmentShiningBinding
 import com.example.gdsc_app.model.OrderViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import com.squareup.picasso.Picasso
+//import com.example.gdsc_app.model.OrderViewModelFactory
 
-class DetailFragment : Fragment() {
-    private var binding: FragmentDetailBinding? = null
-    private lateinit var auth: FirebaseAuth
+class ShiningFragment: Fragment() {
+    private var binding: FragmentShiningBinding? = null
+
     private val sharedViewModel: OrderViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = FragmentDetailBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentShiningBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        auth= Firebase.auth
-        val user=auth.currentUser
-        val photourl= auth.getCurrentUser()?.getPhotoUrl()
-        Picasso.get().load(photourl).into(binding?.profileImage)
-        binding?.username?.setText(user?.displayName.toString())
-        binding?.email?.setText(user?.email.toString())
 
         binding?.apply {
             // Specify the fragment as the lifecycle owner
@@ -44,11 +35,23 @@ class DetailFragment : Fragment() {
             viewModel = sharedViewModel
 
             // Assign the fragment
-            detailFragment = this@DetailFragment
+            shiningFragment = this@ShiningFragment
         }
     }
 
-    fun HomeScreen(){
-        findNavController().navigate(R.id.action_detailFragment_to_startFragment)
+    fun goToNextScreen() {
+        sharedViewModel.setDate()
+        findNavController().navigate(R.id.action_shiningFragment_to_summaryFragment)
+    }
+    fun cancelOrder() {
+        // Reset order in view model
+        sharedViewModel.resetOrder()
+
+        // Navigate back to the [StartFragment] to start over
+        findNavController().navigate(R.id.action_shiningFragment_to_startFragment)
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

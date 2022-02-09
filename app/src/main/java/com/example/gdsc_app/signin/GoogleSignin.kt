@@ -1,11 +1,14 @@
-package com.example.gdsc_app
+package com.example.gdsc_app.signin
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gdsc_app.Dao.UserDao
+import com.example.gdsc_app.data.Daos.UserDao
+import com.example.gdsc_app.MainActivity
+import com.example.gdsc_app.R
+import com.example.gdsc_app.data.data_class.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -51,7 +54,7 @@ class GoogleSignin : AppCompatActivity() {
     private fun updateUI(account: FirebaseUser?) {
         if(account!= null){
 
-            val user= com.example.gdsc_app.model.User(
+            val user= User(
                 account.uid,
                 account.displayName,
                 account.email.toString(),

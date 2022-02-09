@@ -1,4 +1,4 @@
-package com.example.gdsc_app
+package com.example.gdsc_app.product_atrributes
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,19 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.gdsc_app.databinding.FragmentShiningBinding
+import com.example.gdsc_app.R
+import com.example.gdsc_app.databinding.FragmentQuantityBinding
 import com.example.gdsc_app.model.OrderViewModel
 //import com.example.gdsc_app.model.OrderViewModelFactory
 
-class ShiningFragment: Fragment() {
-    private var binding: FragmentShiningBinding? = null
+class QuantityFragment: Fragment() {
+    private var binding: FragmentQuantityBinding? = null
 
     private val sharedViewModel: OrderViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = FragmentShiningBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentQuantityBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }
@@ -34,20 +35,29 @@ class ShiningFragment: Fragment() {
             viewModel = sharedViewModel
 
             // Assign the fragment
-            shiningFragment = this@ShiningFragment
+            quantityFragment = this@QuantityFragment
         }
+    }
+    private fun isEntryValid(): Boolean {
+        if (binding?.quantity?.text.toString().isBlank()) {
+            return false
+        }
+        return true
     }
 
     fun goToNextScreen() {
-        sharedViewModel.setDate()
-        findNavController().navigate(R.id.action_shiningFragment_to_summaryFragment)
+        if(isEntryValid()) {
+            val value = binding?.quantity?.text.toString()
+            sharedViewModel.setquantity(value)
+        }
+        findNavController().navigate(R.id.action_quantityFragment_to_shiningFragment)
     }
     fun cancelOrder() {
         // Reset order in view model
         sharedViewModel.resetOrder()
 
         // Navigate back to the [StartFragment] to start over
-        findNavController().navigate(R.id.action_shiningFragment_to_startFragment)
+        findNavController().navigate(R.id.action_quantityFragment_to_startFragment)
     }
     override fun onDestroyView() {
         super.onDestroyView()

@@ -2,7 +2,7 @@
 <!-- Layout for order summary -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".SummaryFragment">
+    tools:context=".product_atrributes.SummaryFragment">
 
     <data>
         <variable
@@ -11,7 +11,7 @@
 
         <variable
             name="summaryFragment"
-            type="com.example.gdsc_app.SummaryFragment" />
+            type="com.example.gdsc_app.product_atrributes.SummaryFragment" />
     </data>
 
     <ScrollView

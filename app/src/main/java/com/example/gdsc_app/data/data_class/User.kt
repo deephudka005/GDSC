@@ -1,4 +1,4 @@
-package com.example.gdsc_app.model
+package com.example.gdsc_app.data.data_class
 
 data class User (val uid: String ="",
                  val displayName:String?="",

@@ -1,16 +1,16 @@
-package com.example.gdsc_app
+package com.example.gdsc_app.order_history
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gdsc_app.databinding.FragmentVieworderBinding
 import com.example.gdsc_app.model.OrderViewModel
+
 //import com.example.gdsc_app.model.OrderViewModelFactory
 
 class ViewOrderFragment: Fragment() {

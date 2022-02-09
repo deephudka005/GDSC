@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ItemListFragment">
+    tools:context=".current_order.ItemListFragment">
 
     <data>
         <variable
@@ -11,7 +11,7 @@
 
         <variable
             name="itemlist"
-            type="com.example.gdsc_app.ItemListFragment" />
+            type="com.example.gdsc_app.current_order.ItemListFragment" />
     </data>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

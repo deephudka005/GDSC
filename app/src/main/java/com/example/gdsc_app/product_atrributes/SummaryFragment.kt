@@ -1,4 +1,4 @@
-package com.example.gdsc_app
+package com.example.gdsc_app.product_atrributes
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.gdsc_app.data.Data
-import com.example.gdsc_app.data.Order
-import com.example.gdsc_app.data.OrderDao
+import com.example.gdsc_app.R
+import com.example.gdsc_app.data.data_class.Data
+import com.example.gdsc_app.data.data_class.Order
+import com.example.gdsc_app.data.Daos.OrderDao
 import com.example.gdsc_app.databinding.FragmentSummaryBinding
 import com.example.gdsc_app.model.OrderViewModel
 import com.google.firebase.auth.FirebaseAuth

@@ -1,4 +1,4 @@
-package com.example.gdsc_app
+package com.example.gdsc_app.current_order
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gdsc_app.R
 import com.example.gdsc_app.databinding.ItemListFragmentBinding
 import com.example.gdsc_app.model.OrderViewModel
 import kotlinx.android.synthetic.main.item_list_fragment.*
