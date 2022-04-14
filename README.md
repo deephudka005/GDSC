@@ -39,17 +39,5 @@ Earlier I talked about the app, it is right now time consuming people who want t
 8. I will continue modfying this app till it is perfect. The UI I want to make it a bit stylish using Materials components provided by Google.
 
 
-* *Help
-
-I was not able to add data in Room Database. If possible please comment on changes needed.
-Please help I am not able to add data to Room DataBase using the google codelab code
-
-https://github.com/google-developer-training/android-basics-kotlin-inventory-app/tree/room
-
-Here is the link referral link.
-
-In SummaryFragment.kt in 26th line it throws an Error.
-
-
 #Thank You 
 # Open for Suggestions
